@@ -1,0 +1,73 @@
+Groups of particles
+Each group has different properties
+Each group will have a set of relationships w/ other groups
+The relationship will determine changes in velocity or acceleration
+
+# STRUCTURES
+Space -> Group -> Particle && Relation
+
+Space
+	groups: Array<Group>
+	addGroup(size, color, mass) -> Group.id
+	addParticle(
+		Group.id,
+		x=Math.random(),
+		y=Math.random(),
+		vx=Math.random(),
+		vy=Math.random(),
+		ax=0,
+		ay=0,
+		) -> Particle.id
+	addRelation(Group.id, Group.id, func) -> Relation.id
+	delGroup(Group.id)
+	delParticle()
+	delRelation()
+	update()
+
+Particle
+	space: Space
+	group: Group
+	size: number
+	color: string
+	mass: number
+	x: number
+	y: number
+	vx: number
+	vy: number
+	ax: number
+	ay: number
+
+Group
+	space: Space
+	name?
+	id: number
+	size: number
+	color: string
+	mass: number
+	shape?
+	particles: Array<Particle>
+	relations: Array<Relation>
+	addParticle(newid, x, y, vx, vy, ax, ay)
+	addRelation(newid, func)
+
+Relation
+	space: Space
+	actor: Group.id
+	responder: Group.id
+	function: function(particle)
+
+
+# IMPLEMENTATION
+const spc = new Space();
+
+spc.addGroup(size, color, mass);
+spc.addGroup(size, color, mass);
+
+spc.addRelation(Group.id, Group.id, func);
+spc.addRelation(Group.id, Group.id, func);
+
+for group in spc.groups:
+	for (let i = 0; i < 5; i++):
+		group.addParticle()
+
+
